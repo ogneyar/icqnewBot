@@ -29,8 +29,11 @@ foreach($события as $event) {
 echo "Последнее событие: ".$lastEvent."<br><br>";
 
 echo "<pre>"; print_r($события); echo "</pre>";
+
+$bot->sendText($chatId, "Кууууууль");
+
 /*
-$событие = $bot->getEvents($lastEvent,15);
+$событие = $bot->getEvents($lastEvent,5);
 
 if ($событие[0]['payload']['text']=='ё') {
 	$bot->sendText($событие[0]['payload']['chatId'], "клмн");
