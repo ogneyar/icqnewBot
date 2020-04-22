@@ -32,7 +32,7 @@ echo "<pre>"; print_r($события); echo "</pre>";
 
 $события = $bot->getEvents($lastEvent,5);
 
-if ($события[0]['payload']['text']=='ё') {
+if ($события[0]['text']=='ё') {
 	$bot->sendText($события[0]['payload']['chat']['chatId'], "клмн");
 }else $bot->sendText($события[0]['payload']['chat']['chatId'], "я не понимаю(");
 
