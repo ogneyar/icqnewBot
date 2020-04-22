@@ -1,6 +1,6 @@
 <?
 // Подключаем библиотеку с классом Bot
-include_once 'myBotApi/Bot.php';
+include_once 'icqNew-BotApi-php/Bot.php';
 
 $token = "001.2839288818.3919878723:752122979";
 
