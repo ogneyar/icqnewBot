@@ -32,6 +32,8 @@ echo "<pre>"; print_r($события); echo "</pre>";
 
 $событие = $bot->getEvents($lastEvent,15);
 
-if ($событие[0]['payload']['text']=='ё') $bot->sendText($событие[0]['payload']['chatId'], "клмн");
+if ($событие[0]['payload']['text']=='ё') {
+	$bot->sendText($событие[0]['payload']['chatId'], "клмн");
+}else $bot->sendText($событие[0]['payload']['chatId'], "я не понимаю(");
 
 ?>
