@@ -30,7 +30,7 @@ echo "Последнее событие: ".$lastEvent."<br><br>";
 
 echo "<pre>"; print_r($события); echo "</pre>";
 
-$bot->sendText($chatId, "Кууууууль");
+$bot->sendText($событие[0]['payload']['chatId'], "Кууууууль");
 
 /*
 $событие = $bot->getEvents($lastEvent,5);
