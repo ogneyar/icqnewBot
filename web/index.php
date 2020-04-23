@@ -36,8 +36,26 @@ do {
 	
 	echo "Последнее событие: ".$eventId."<br><br>";
 	
-	if ($text=='q') {
+	if ($text=='ё') {
 		$bot->sendText($chatId, "клмн");
+	}elseif ($text=='/start') {
+		$реплика = "Здравствуй ".$firstName."\n\nПопробуй команду /help";
+		$bot->sendText($chatId, $реплика);
+	}elseif ($text=='/help') {
+		$реплика = "Список понимаемых мною команд:\n\nё\nПривет\nКак дела?\nеее\nуфь";
+		$bot->sendText($chatId, $реплика);
+	}elseif ($text=='Привет') {
+		$реплика = "Сам ты привет. И брат твой привет. И сестра твоя привет.";
+		$bot->sendText($chatId, $реплика);
+	}elseif ($text=='Как дела?') {
+		$реплика = "Дааа норм чо, а #сам_чо_как?";
+		$bot->sendText($chatId, $реплика);
+	}elseif ($text=='еее') {
+		$реплика = "Так держать хозяин!";
+		$bot->sendText($chatId, $реплика);
+	}elseif ($text=='уфь') {
+		$реплика = "Эт ты на каком языке? Уууфь, нет такой буквы в алфавите!";
+		$bot->sendText($chatId, $реплика);
 	}elseif ($text) $bot->sendText($chatId, "я не понимаю(");
 
 }while ($eventId);
