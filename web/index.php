@@ -1,4 +1,4 @@
-<?
+﻿<?
 // Подключаем библиотеку с классом Bot
 include_once 'icqNew-BotApi-php/Bot.php';
 
@@ -9,31 +9,56 @@ $bot = new Bot($token);
 
 $id_bota = substr(strstr($token, ':'), 1);	
 
-$события = $bot->getEvents(0,0);
 
-foreach($события as $event) {
-	$lastEvent = $event['eventId'];
-	$payload = $event['payload'];
-		$chat = $payload['chat'];
-			$chatId = $chat['chatId'];
-			$chatType = $chat['type'];
-		$from = $payload['from'];
-			$firstName = $from['firstName'];
-			$nick = $from['nick'];
-			$userId = $from['userId'];
-		$msgId = $payload['msgId'];
-		$text = $payload['text'];
-		$timestamp = $payload['timestamp'];
-	$type = $event['type'];
-}
-echo "Последнее событие: ".$lastEvent."<br><br>";
+do {
+	if (!$eventId) {
+		$события = $bot->getEvents(0,0);
 
-echo "<pre>"; print_r($события); echo "</pre>";
+		foreach($события as $event) {
+			$eventId = $event['eventId'];
+			$payload = $event['payload'];
+				$chat = $payload['chat'];
+					$chatId = $chat['chatId'];
+					$chatType = $chat['type'];
+				$from = $payload['from'];
+					$firstName = $from['firstName'];
+					$nick = $from['nick'];
+					$userId = $from['userId'];
+				$msgId = $payload['msgId'];
+				$text = $payload['text'];
+				$timestamp = $payload['timestamp'];
+			$type = $event['type'];
+		}
+	}//else ++$eventId;
+	echo "Последнее событие: ".$eventId."<br><br>";
 
-$события = $bot->getEvents($lastEvent,5);
+	//echo "<pre>"; print_r($события); echo "</pre>";
 
-if ($события[0]['text']=='ё') {
-	$bot->sendText($события[0]['payload']['chat']['chatId'], "клмн");
-}else $bot->sendText($события[0]['payload']['chat']['chatId'], "я не понимаю(");
+	$события = $bot->getEvents($eventId,150);
+
+	foreach($события as $event) {
+		$eventId = $event['eventId'];
+		$payload = $event['payload'];
+			$chat = $payload['chat'];
+				$chatId = $chat['chatId'];
+				$chatType = $chat['type'];
+			$from = $payload['from'];
+				$firstName = $from['firstName'];
+				$nick = $from['nick'];
+				$userId = $from['userId'];
+			$msgId = $payload['msgId'];
+			$text = $payload['text'];
+			$timestamp = $payload['timestamp'];
+		$type = $event['type'];
+	}
+	
+	if ($text=='q') {
+		$bot->sendText($chatId, "клмн");
+	}elseif ($text) $bot->sendText($chatId, "я не понимаю(");
+
+}while ($eventId);
+
+echo "Цикл окончен. <br><br>";
+$bot->sendText("@Ogneyar_", "Цикл окончен.");
 
 ?>
