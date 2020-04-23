@@ -9,6 +9,7 @@ $bot = new Bot($token);
 
 $id_bota = substr(strstr($token, ':'), 1);	
 
+$eventId = null;
 
 do {
 	if (!$eventId) {
