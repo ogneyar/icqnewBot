@@ -4,7 +4,7 @@ include_once 'icqNew-BotApi-php/Bot.php';
 
 $token = "001.2839288818.3919878723:752122979";
 
-exit('ok');
+//exit('ok');
 
 // Создаем объект бота
 $bot = new Bot($token);
