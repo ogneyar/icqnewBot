@@ -16,7 +16,7 @@ $eventId = 0;
 $bot->sendText("@Ogneyar_", "Цикл начат.");
 
 do {
-	$события = $bot->getEvents($eventId,150);
+	$события = $bot->getEvents($eventId,15);
 
 	foreach($события as $event) {
 		$eventId = $event['eventId'];
@@ -65,6 +65,8 @@ do {
 echo "Цикл окончен. <br><br>";
 $bot->sendText("@Ogneyar_", "Цикл окончен.");
 
-echo "<pre>"; print_r($события); echo "</pre>";
+echo "<pre>"; print_r($события); echo "</pre><br><br>";
+
+exit('ok');
 
 ?>
